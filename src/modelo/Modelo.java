@@ -19,6 +19,11 @@ public class Modelo {
         this.resultado = this.numeroUno * this.numeroDos;
         return this.resultado;
     }
+    
+     public int sumar() {
+        this.resultado = this.numeroUno + this.numeroDos;
+        return this.resultado;
+    }
 
     public int getNumeroUno() {
         return numeroUno;

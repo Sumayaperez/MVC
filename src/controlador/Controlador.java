@@ -15,31 +15,38 @@ import vista.Vista;
  * @author Consultor KIT
  */
 public class Controlador implements ActionListener {
-    
+
     private Vista view;
     private Modelo model;
-    
-    public Controlador(Vista view, Modelo model){
+
+    public Controlador(Vista view, Modelo model) {
         this.view = view;
         this.model = model;
         this.view.btnMultiplicar.addActionListener(this);
-        
-    } 
-    
-    public void iniciar(){
-       view.setTitle("MVC operaciones matemáticas");
-       view.setLocationRelativeTo(null);
+        this.view.btnSumar.addActionListener(this);
+
     }
-    
-    public void actionPerformed(ActionEvent e){
+
+    public void iniciar() {
+        view.setTitle("MVC operaciones matemáticas");
+        view.setLocationRelativeTo(null);
+    }
+
+    public void actionPerformed(ActionEvent e) {
         model.setNumeroUno(Integer.parseInt(view.txtNumUno.getText()));
         model.setNumeroDos(Integer.parseInt(view.txtNumDos.getText()));
-        model.multiplicar();
+
+        Object control = e.getSource();
+        if (control.equals(view.btnMultiplicar)) {
+            // System.out.println("Se ha pulsado el botón Multiplicar");
+            model.multiplicar();
+        } else if (control.equals(view.btnSumar)) {
+            // System.out.println("Se ha pulsado el botón Sumar");
+            model.sumar();
+        }
+
         view.txtResultado.setText(String.valueOf(model.getResultado()));
-        
-        
+
     }
 
-
 }
-
